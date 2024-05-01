@@ -26,7 +26,7 @@ typedef enum c_EServerMode_t
 	c_eServerModeAuthenticationAndSecure = 3,
 } c_EServerMode;
 
-bool c_SteamGameServer_Init(uint32_t unIP, uint16_t usSteamPort, uint16_t usGamePort, uint16_t usQueryPort, c_EServerMode eServerMode, const char* pchVersionString);
+bool c_SteamGameServer_Init(uint32_t unIP, uint16_t usGamePort, uint16_t usQueryPort, c_EServerMode eServerMode, const char* pchVersionString);
 
 void c_SteamGameServer_Shutdown();
 
@@ -50,7 +50,7 @@ void c_SteamGameServer_SetGameDescription(const char *pszGameDescription);
 
 void c_SteamGameServer_LogOnAnonymous();
 
-void c_SteamGameServer_EnableHeartbeats(bool bActive);
+void c_SteamGameServer_SetAdvertiseServerActive(bool bActive);
 
 void c_SteamGameServer_LogOff();
 

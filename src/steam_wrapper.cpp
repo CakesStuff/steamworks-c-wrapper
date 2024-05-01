@@ -51,9 +51,9 @@ extern "C" void c_SteamAPI_RunCallbacks()
 	return SteamAPI_RunCallbacks();
 }
 
-extern "C" bool c_SteamGameServer_Init(uint32_t unIP, uint16_t usSteamPort, uint16_t usGamePort, uint16_t usQueryPort, c_EServerMode eServerMode, const char* pchVersionString)
+extern "C" bool c_SteamGameServer_Init(uint32_t unIP, uint16_t usGamePort, uint16_t usQueryPort, c_EServerMode eServerMode, const char* pchVersionString)
 {
-	return SteamGameServer_Init(unIP, usSteamPort, usGamePort, usQueryPort, static_cast<EServerMode>(eServerMode), pchVersionString);
+	return SteamGameServer_Init(unIP, usGamePort, usQueryPort, static_cast<EServerMode>(eServerMode), pchVersionString);
 }
 
 extern "C" void c_SteamGameServer_Shutdown()
@@ -86,9 +86,9 @@ extern "C" void c_SteamGameServer_LogOnAnonymous()
 	SteamGameServer()->LogOnAnonymous();
 }
 
-extern "C" void c_SteamGameServer_EnableHeartbeats(bool bActive)
+extern "C" void c_SteamGameServer_SetAdvertiseServerActive(bool bActive)
 {
-	SteamGameServer()->EnableHeartbeats(bActive);
+	SteamGameServer()->SetAdvertiseServerActive(bActive);
 }
 
 extern "C" void c_SteamGameServer_LogOff()
@@ -143,7 +143,7 @@ extern "C" bool c_SteamGameServer_BSecure()
 
 extern "C" void c_SteamGameServer_SendUserDisconnect(void* steamIDUser)
 {
-	SteamGameServer()->SendUserDisconnect(*static_cast<CSteamID *>(steamIDUser));
+	SteamGameServer()->SendUserDisconnect_DEPRECATED(*static_cast<CSteamID *>(steamIDUser));
 }
 
 extern "C" void c_SteamGameServer_RunCallbacks()
