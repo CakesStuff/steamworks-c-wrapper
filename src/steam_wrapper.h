@@ -6,6 +6,14 @@
 #ifndef STEAM_WRAPPER_H
 #define STEAM_WRAPPER_H
 
+#ifndef EXTERN
+#ifdef _STEAM_EXTERN
+#define EXTERN extern
+#else
+#define EXTERN
+#endif
+#endif
+
 #include <stdint.h>
 
 bool c_SteamAPI_Init();
@@ -443,13 +451,13 @@ void* c_P2PSessionRequest_t_m_steamIDRemote(void *P2PSessionRequest_t_instance);
  * Function pointers to handle steam callbacks.
  * NOTE: You'll have to implement these yourself. But first, call c_SteamServerWrapper_Instantiate().
  */
-void (*c_SteamServerWrapper_OnSteamServersConnected)(void *pLogonSuccess);
-void (*c_SteamServerWrapper_OnSteamServersConnectFailure)(void *pConnectFailure);
-void (*c_SteamServerWrapper_OnSteamServersDisconnected)(void *pLoggedOff);
-void (*c_SteamServerWrapper_OnPolicyResponse)(void *pPolicyResponse);
-void (*c_SteamServerWrapper_OnValidateAuthTicketResponse)(void *pResponse);
-void (*c_SteamServerWrapper_OnP2PSessionRequest)(void *p_Callback);
-void (*c_SteamServerWrapper_OnP2PSessionConnectFail)(void *pCallback);
+EXTERN void (*c_SteamServerWrapper_OnSteamServersConnected)(void *pLogonSuccess);
+EXTERN void (*c_SteamServerWrapper_OnSteamServersConnectFailure)(void *pConnectFailure);
+EXTERN void (*c_SteamServerWrapper_OnSteamServersDisconnected)(void *pLoggedOff);
+EXTERN void (*c_SteamServerWrapper_OnPolicyResponse)(void *pPolicyResponse);
+EXTERN void (*c_SteamServerWrapper_OnValidateAuthTicketResponse)(void *pResponse);
+EXTERN void (*c_SteamServerWrapper_OnP2PSessionRequest)(void *p_Callback);
+EXTERN void (*c_SteamServerWrapper_OnP2PSessionConnectFail)(void *pCallback);
 
 /*
  * NOTE: Call c_SteamServerWrapper_Destroy() when you're done using this to free the memory.
@@ -496,26 +504,26 @@ void* c_ValidateAuthTicketResponse_t_m_SteamID(void *ValidateAuthTicketResponse_
  * Function Pointers to handle steam callbacks.
  * NOTE: You'll have to implement these yourself. But first, call c_SteamServerClientWrapper_Instantiate().
  */
-void (*c_SteamServerClientWrapper_OnLobbyDataUpdate)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnLobbyGameCreated)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnGameJoinRequested)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnAvatarImageLoaded)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnSteamServersConnected)(void *callback);
-void (*c_SteamServerClientWrapper_OnSteamServersDisconnected)(void *callback);
-void (*c_SteamServerClientWrapper_OnSteamServerConnectFailure)(void *callback);
-void (*c_SteamServerClientWrapper_OnGameOverlayActivated)(void *callback);
-void (*c_SteamServerClientWrapper_OnGameWebCallback)(void *callback);
-void (*c_SteamServerClientWrapper_OnWorkshopItemInstalled)(void *pParam);
-void (*c_SteamServerClientWrapper_OnP2PSessionConnectFail)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnP2PSessionRequest)(void *pCallback);
-void (*c_SteamServerClientWrapper_OnIPCFailure)(void *failure);
-void (*c_SteamServerClientWrapper_OnSteamShutdown)(void *callback);
-void (*c_SteamServerClientWrapper_OnLobbyCreated)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyCreated_t.
-void (*c_SteamServerClientWrapper_OnLobbyEntered)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyEnter_t.
-void (*c_SteamServerClientWrapper_OnLobbyMatchListCallback)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyMatchList_t.
-void (*c_SteamServerClientWrapper_OnRequestEncryptedAppTicket)(void *pEncryptedAppTicketResponse, bool bIOFailure); //Where pEncryptedAppTicketResponse is of type EncryptedAppTicketResponse_t.
+EXTERN void (*c_SteamServerClientWrapper_OnLobbyDataUpdate)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnLobbyGameCreated)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnGameJoinRequested)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnAvatarImageLoaded)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnSteamServersConnected)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnSteamServersDisconnected)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnSteamServerConnectFailure)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnGameOverlayActivated)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnGameWebCallback)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnWorkshopItemInstalled)(void *pParam);
+EXTERN void (*c_SteamServerClientWrapper_OnP2PSessionConnectFail)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnP2PSessionRequest)(void *pCallback);
+EXTERN void (*c_SteamServerClientWrapper_OnIPCFailure)(void *failure);
+EXTERN void (*c_SteamServerClientWrapper_OnSteamShutdown)(void *callback);
+EXTERN void (*c_SteamServerClientWrapper_OnLobbyCreated)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyCreated_t.
+EXTERN void (*c_SteamServerClientWrapper_OnLobbyEntered)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyEnter_t.
+EXTERN void (*c_SteamServerClientWrapper_OnLobbyMatchListCallback)(void *pCallback, bool bIOFailure); //Where pCallback is a pointer to type LobbyMatchList_t.
+EXTERN void (*c_SteamServerClientWrapper_OnRequestEncryptedAppTicket)(void *pEncryptedAppTicketResponse, bool bIOFailure); //Where pEncryptedAppTicketResponse is of type EncryptedAppTicketResponse_t.
 
-void (*c_SteamServerClientWrapper_GameServerPingOnServerResponded)(void *steamID);
+EXTERN void (*c_SteamServerClientWrapper_GameServerPingOnServerResponded)(void *steamID);
 
 /*
  * NOTE: Call c_SteamServerClientWrapper_Destroy() when you're done using this to free to memory.
