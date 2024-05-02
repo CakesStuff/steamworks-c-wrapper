@@ -30,6 +30,11 @@ extern "C" void c_SteamAPI_Shutdown()
 	SteamAPI_Shutdown();
 }
 
+extern "C" bool c_SteamAPI_IsSteamRunning()
+{
+	return SteamAPI_IsSteamRunning();
+}
+
 extern "C" bool c_SteamAPI_RestartAppIfNecessary(uint32_t unOwnAppID)
 {
 	return SteamAPI_RestartAppIfNecessary(unOwnAppID);

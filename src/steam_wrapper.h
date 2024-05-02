@@ -20,6 +20,8 @@ bool c_SteamAPI_Init();
 
 void c_SteamAPI_Shutdown();
 
+bool c_SteamAPI_IsSteamRunning();
+
 bool c_SteamAPI_RestartAppIfNecessary(uint32_t unOwnAppID);
 
 bool c_SteamUser_BLoggedOn();
